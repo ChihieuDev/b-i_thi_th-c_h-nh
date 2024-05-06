@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function countUpperCaseCharacters(inputString) {
+        let count = 0;
+        for (let i = 0; i < inputString.length; i++) {
+            if (inputString[i] >= 'A' && inputString[i] <= 'Z') {
+                count++;
+            }
+        }
+        return count;
+    }
+    let input = prompt("mời bạn nhập chuỗi");
+    document.write(countUpperCaseCharacters(input1));
+    document.write(countUpperCaseCharacters(input2));
+
+</script>
+</body>
+</html>

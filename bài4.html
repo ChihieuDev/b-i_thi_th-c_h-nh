@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Phone {
+        constructor(code, name, brand, price) {
+            this._code = code;
+            this._name = name;
+            this._brand = brand;
+            this._price = price;
+        }
+        get code() {
+            return this._code;
+        }
+        set code(code) {
+            this._code = code;
+        }
+        get name() {
+            return this._name;
+        }
+        set name(name) {
+            this._name = name;
+        }
+        get brand() {
+            return this._brand;
+        }
+        set brand(brand) {
+            this._brand = brand;
+        }
+        get price() {
+            return this._price;
+        }
+        set price(price) {
+            if (typeof price !== 'number' || price < 0) {
+                throw new Error('Price must be a non-negative number.');
+            }
+            this._price = price;
+        }
+        toString() {
+            return `Phone: ${this._name} (${this._brand}) - Code: ${this._code}, Price: ${this._price}`;
+        }
+    }
+    class PhoneManager {
+        constructor() {
+            this.phones = [];
+        }
+        addPhone(phone) {
+            this.phones.push(phone);
+        }
+        hienThiDanhSachSapXep() {
+            const sortedPhones = this.phones.slice().sort((a, b) => a.name.localeCompare(b.name));
+            let result = "";
+            sortedPhones.forEach(phone => result += phone.toString() + "<br>");
+            return result;
+        }
+    }
+    const phoneManager = new PhoneManager();
+    const phone1 = new Phone("DT001", "iPhone 12", "Apple", 1200);
+    const phone2 = new Phone("DT002", "Galaxy S21", "Samsung", 1100);
+    const phone3 = new Phone("DT003", "OnePlus 9", "OnePlus", 1000);
+    phoneManager.addPhone(phone1);
+    phoneManager.addPhone(phone2);
+    phoneManager.addPhone(phone3);
+    document.write("Danh sách điện thoại sau khi sắp xếp:<br>", phoneManager.hienThiDanhSachSapXep());
+</script>
+</body>
+</html>

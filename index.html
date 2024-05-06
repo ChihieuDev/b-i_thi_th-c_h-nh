@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function tinhTongChanLe(mang) {
+        let tongChan = 0;
+        let tongLe = 0;
+        let hieu = 0;
+        for (let so of mang) {
+            if (so % 2 === 0) {
+                tongChan += so;
+            } else {
+                tongLe += so;
+            }
+        }
+        hieu = tongChan - tongLe;
+        return { tongChan, tongLe, hieu };
+    }
+    function main() {
+        const n = parseInt(prompt("Nhập số lượng phần tử: "));
+        if (n <= 0 || n > 20) {
+            alert("Số lượng phần tử không hợp lệ (1 <= n <= 20)");
+            return;
+        }
+        const mang = [];
+        for (let i = 0; i < n; i++) {
+            const so = parseInt(prompt(`Nhập phần tử thứ ${i + 1}: `));
+            mang.push(so);
+        }
+        const { tongChan, tongLe, hieu } = tinhTongChanLe(mang);
+        document.write("\n Danh sách phần tử:");
+        document.write(mang.join(" "));
+        document.write(`\n Tổng các số chẵn: ${tongChan}`);
+        document.write(`Tổng các số lẻ: ${tongLe}`);
+        document.write(`Hiệu: ${hieu}`);
+    }
+    main();
+</script>
+</body>
+</html>
